@@ -41,7 +41,7 @@ SIZE=300
 BUFFERSIZE=SIZE*SIZE*3 #BGR data, 8 bit per channel
 
 print("Loading Model ")
-model = torch.hub.load('NVIDIA/DeepLearningExamples:torchhub', 'nvidia_ssd')
+model = torch.hub.load('robot-perception-group/NVIDIADeepLearningExamplesFork:aircap', 'nvidia_ssd')
 model = model.to(device)
 model.eval()
 
