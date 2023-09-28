@@ -41,7 +41,11 @@ SIZE=300
 BUFFERSIZE=SIZE*SIZE*3 #BGR data, 8 bit per channel
 
 print("Loading Model ")
-model = torch.hub.load('robot-perception-group/NVIDIADeepLearningExamplesFork:aircap', 'nvidia_ssd')
+#model = torch.hub.load('robot-perception-group/NVIDIADeepLearningExamplesFork:aircap', 'nvidia_ssd')
+import model 
+model=model.SSD300(backbone=model.ResNet('resnet34'))
+weights=torch.hub.load_state_dict_from_url('https://keeper.mpdl.mpg.de/f/bd06ac1f6cf84da8b749/?dl=1', map_location=lambda storage, loc: storage, file_name='ssd.pt')['model']
+model.load_state_dict(weights)
 model = model.to(device)
 model.eval()
 
